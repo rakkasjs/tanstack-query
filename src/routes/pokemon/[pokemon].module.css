@@ -1,0 +1,44 @@
+.imageWrapper {
+  text-align: center;
+}
+
+.image {
+  zoom: 2;
+}
+
+.heading {
+  text-align: center;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+}
+
+.stat {
+  list-style-type: none;
+  width: calc(50% - 1em);
+  margin-left: 1em;
+  margin-top: 1em;
+  padding: 0.5em 1em;
+  border: solid 1px #ccd;
+  border-radius: 0.5em;
+}
+
+.stat > h4 {
+  margin-top: 0.25rem;
+}
+
+@media (min-width: 900px) {
+  .stat {
+    width: calc(33.333333% - 1em);
+  }
+}
+
+@media (min-width: 1200px) {
+  .stat {
+    width: calc(25% - 1em);
+  }
+}
