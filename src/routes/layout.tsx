@@ -24,3 +24,9 @@ export default function MainLayout({ children }: LayoutProps) {
     </div>
   );
 }
+
+// import type { HeadersFunction } from "rakkasjs";
+//
+// export const headers: HeadersFunction = () => ({
+//   throttleRenderStream: true,
+// });
