@@ -21,7 +21,7 @@ $TQS = (data) => Object.assign($TQD, data);
 
 This defines a global object called `$TQD` (as in "Tanstack Query data") and a function called `$TQS` (as in "Tanstack Query set"). When `$TQS` is called with some data, it's merged into `$TQD`.
 
-The `emitBeforeSsrChunk` is for injecting markup into React's SSR stream each time before React emits a chunk of HTML. We use it to inject a script that calls the `$TQS` function with the new data since the last time. The data is serialized with [`devalue`](https://github.com/Rich-Harris/devalue), but `JSON.stringify` + some escaping would also work depending on your needs.
+The `emitBeforeSsrChunk` is for injecting markup into React's SSR stream before each time React emits a chunk of HTML. We use it to inject a script that calls the `$TQS` function with the new data since the last time. The data is serialized with [`devalue`](https://github.com/Rich-Harris/devalue), but `JSON.stringify` + some escaping would also work depending on your needs.
 
 In [`entry-client.tsx`](./src/entry-client.tsx), which is the client entry point of Rakkas, we take the data accumulated in `$TQD` and use `queryClient.setQueryData` to make it available to the client-side queries. We also overwrite the `$TQS` function to call `queryClient.setQueryData` from then on instead of stuffing the data into `$TQD`. We also delete the `$TQD` object to free up some memory.
 
