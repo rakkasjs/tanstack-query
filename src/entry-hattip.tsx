@@ -4,7 +4,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
-import { devalue } from "devalue";
+import { uneval } from "devalue";
 
 export default createRequestHandler({
   createPageHooks() {
@@ -17,7 +17,7 @@ export default createRequestHandler({
         // Emit a script that calls the global $rqh function with the
         // newly fetched query data.
 
-        const queriesString = devalue(queries);
+        const queriesString = uneval(queries);
         queries = Object.create(null);
         return `<script>$rqh(${queriesString})</script>`;
       },
